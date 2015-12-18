@@ -17,8 +17,8 @@ cab pd !p4 diff %
 command UC call UpdateCScope()
 
 function! UpdateCScope()
-    !find $CSCOPE_DB -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > $CSCOPE_DB/cscope.files
-    !cscope -bvq -i $CSCOPE_DB/cscope.files -f $CSCOPE_DB/cscope.out
+    :silent !find $CSCOPE_DB -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > $CSCOPE_DB/cscope.files
+    :silent !cscope -bvq -i $CSCOPE_DB/cscope.files -f $CSCOPE_DB/cscope.out
     cs reset
 endfunction
 
