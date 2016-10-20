@@ -11,6 +11,8 @@ cab pa !p4 add %
 cab pe !p4 edit %
 cab pd !p4 diff %
 
+autocmd BufWritePre * %s/\s\+$//e
+
 ":autocmd BufWritePost *.c call UpdateCScope()
 ":autocmd BufWritePost *.h call UpdateCScope()
 
@@ -22,3 +24,4 @@ function! UpdateCScope()
     cs reset
 endfunction
 
+filetype indent on
