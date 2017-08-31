@@ -10,7 +10,7 @@
 "
 "============================================================================
 
-if exists("g:loaded_syntastic_nasm_nasm_checker")
+if exists('g:loaded_syntastic_nasm_nasm_checker')
     finish
 endif
 let g:loaded_syntastic_nasm_nasm_checker = 1
@@ -19,9 +19,10 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! SyntaxCheckers_nasm_nasm_GetLocList() dict
+    let buf = bufnr('')
     let makeprg = self.makeprgBuild({
-        \ 'args_after': '-X gnu -f elf' .
-        \       ' -I ' . syntastic#util#shescape(expand('%:p:h', 1) . '/') .
+        \ 'args_after': '-X gnu' .
+        \       ' -I ' . syntastic#util#shescape(fnamemodify(bufname(buf), ':p:h') . syntastic#util#Slash()) .
         \       ' ' . syntastic#c#NullOutput() })
 
     let errorformat = '%f:%l: %t%*[^:]: %m'
